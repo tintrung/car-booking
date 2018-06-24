@@ -1,12 +1,15 @@
 language: php
-
 php:
-  - 7.0
   - 7.1
   - 7.2
-  - hhvm
-
 before_script:
-  - composer install --dev --prefer-source --no-interaction
-
-script: vendor/bin/phpunit tests
+  - cp .env.travis .env
+  - composer install --no-interaction
+  - mysql -e "CREATE DATABASE ${DB_NAME};"
+  - php artisan key:generate
+script:
+  - php artisan migrate --no-interaction
+  - vendor/bin/phpunit tests
+env:
+  matrix:
+    secure: FzlYcCQtME1vfnkWqn2p1/ELIIYB4NRY09dyD8fyJzoN5EpWXH+d5JwnJk2KmjXDtVK3UgNU/ZA31wNX+VqYY5suhA8o+yvoIS+XzwSgLJ4k88uP0A+8dtWe3oSW8fk0dyQz0ONZjgkYY+EoPJL1HcCMHuynwTcfoCdBWq2QkQRLLBOzud3PNyPgB/UxSBecNKYFxf7urkTyDN8s9BRQqXsUqMDw/8ZUSgJFIEUMUr9zzWPBwCLO1RZYCuyIzrA1xH6xeuOgkellXvHdKsdiBdvu98jmMUp8sdy853enfawCBBWEezSYgOKx/3SHQWN2cXKt3SG/uFkGAh3ANV1T9Y4tfo+KITRDDRxk/wTlgPKgRMneRFKlRaD5sMx6RW10SYgX7FTVIqZaPtCdN/a0Rx0eIowG0dhtWhYBYOvH1/WRmtrfr6koFRPpZDoDGi4KAZC3XspQPh/oBi8Uuviimnzro2JfwsRtq8PsNXRblXCYHNeDBicYLFn3YRO8rm2r5pmDdWPmN2FZC3kVA5j3TxPM3ezYUDBbC5K3JVhXxD58zhaIXihH91qN8x74sLnoegMpWEFEZ9xXLquX1y4ivYPz8MPCAupjWK2HgA9UaSZpe3cRIQAW9IzTdWdIb6xcPlUImcRgRdMHnPFjjVjTKQQdVaZUcBqj/nM3/Zp4Qhs=
