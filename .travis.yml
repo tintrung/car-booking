@@ -1,12 +1,16 @@
 language: php
 php:
-  - 7.1
-  - 7.2
+- 7.1
+- 7.2
 before_script:
-  - cp .env.travis .env
-  - composer install --no-interaction
-  - mysql -e "CREATE DATABASE ${DB_DATABASE};"
-  - php artisan key:generate
+- cp .env.travis .env
+- composer install --no-interaction
+- mysql -e "CREATE DATABASE ${DB_DATABASE};"
+- php artisan key:generate
 script:
-  - php artisan migrate --no-interaction
-  - vendor/bin/phpunit tests
+- php artisan migrate --no-interaction
+- vendor/bin/phpunit tests
+deploy:
+  provider: heroku
+  api_key:
+    secure: idlf0+71fyPqZXCwbEzikoexPgNtrxfd3oemIcUEpMbkqPGHjmPr7LER9A5rIbG4sbkk7QY+BfvUKjzwMHZ7CUaoOjz3fmObcTXURjc6CEMB0/65SFhi3rF74dVHy6t2hoz99xAOv9IkpNwFl7yi/5jogWW4s5DDMRdDGPYP56icZbC9xqr/QUA3ya4TqAlNiz7XEXe3NIveWU+Uvio3Qb7+StdSnZuSxZTxTqffMR4QAS8LovYNBUG/jni+YuaLQpieTYe9NxCNKZ9S+Yjeex49m8RkDfyad15C+3X2DkmMDMdSKGoABOvNT5E9z6FA+CdZHsEuOKkuet41+cNyC5v/vZbh3hi+g85FupFn9hCdo9dXVkO4THi11i2mpzm24N00OWAr0IWC7G/plEzBBKDuzgB06vuePROV07xRs348Ap0slT/LEqNitfgEWTfEvT+MpW5LjUeCRVBACIIRNygjv6SOKADKGe6HrrQaBwpPeSAUbf3UTQmUULHIk72e+TsUXEtQ4+ElvczydEXiuWAVtIRslMw2qFC0El5sLgl17YfYUFr12axkv5ehdGjsLHC5IkuWw/kVfB4SrOOgVntzHK4UK0UB3TYga4j+1hHk01k9cOLXZFpm1KtDReUyd9NOGh/hWLd0hi33o32P+oxKoKlwKa76GwrLpsba+Gg=
