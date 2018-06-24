@@ -5,7 +5,7 @@ php:
 before_script:
   - cp .env.travis .env
   - composer install --no-interaction
-  - mysql -e "CREATE DATABASE ${DB_NAME};"
+  - mysql -e "CREATE DATABASE ${DB_DATABASE};"
   - php artisan key:generate
 script:
   - php artisan migrate --no-interaction
