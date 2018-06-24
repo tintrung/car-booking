@@ -4,11 +4,11 @@ php:
   - 7.2
   - hhvm
 before_script:
-  - composer install --prefer-source --no-interaction
+  - cp .env.travis .env
+  - composer install --no-interaction
   - mysql -e "CREATE DATABASE ${DB_NAME};"
-script:
-  - mv .env.travis .env
   - php artisan key:generate
+script:
   - php artisan migrate --no-interaction
   - vendor/bin/phpunit tests
 env:
