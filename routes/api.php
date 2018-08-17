@@ -15,3 +15,10 @@ use Illuminate\Http\Request;
 
 Route::get('/users', 'UserController@all');
 Route::get('/users/{id}', 'UserController@get');
+
+Route::group(['prefix' => 'bookings'], function() {
+    Route::get('/', 'Api\BookingController@all');
+    Route::get('/{id}', 'Api\BookingController@get');
+    Route::get('/cancel/{id}', 'Api\BookingController@cancel');
+    Route::post('/', 'Api\BookingController@create');
+});
