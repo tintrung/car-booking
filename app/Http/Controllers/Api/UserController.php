@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
 
@@ -21,14 +22,14 @@ class UserController extends Controller
      * @param  \App\Repositories\UserRepository  $user
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, UserRepository $user)
+    public function create(Request $request, UserRepository $user)
     {
         try {
             $request->validate($this->rules);
             $user->create($request->all());
             return response()->json([
                 'status' => 'success',
-                'message' => 'User has been successfully created',
+                'message' => __('users.created'),
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -115,13 +116,13 @@ class UserController extends Controller
      * @param  \App\Repositories\UserRepository  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, UserRepository $user)
+    public function delete($id, UserRepository $user)
     {
         try {
             $user->delete($id);
             return response()->json([
                 'status' => 'success',
-                'message' => 'User has been successfully deleted',
+                'message' => __('users.deleted'),
             ]);
         } catch (\Exception $e) {
             return response()->json([
