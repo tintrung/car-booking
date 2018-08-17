@@ -15,3 +15,10 @@ use Illuminate\Http\Request;
 
 Route::get('/users', 'UserController@all');
 Route::get('/users/{id}', 'UserController@get');
+
+Route::group('/bookings', function() {
+    Route::get('/', 'BookingController@all');
+    Route::get('/{id}', 'BookingController@get');
+    Route::post('/', 'BookingController@create');
+    Route::put('/cancel/{id}', 'BookingController@cancel');
+});
