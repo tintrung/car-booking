@@ -17,8 +17,8 @@ Route::get('/users', 'UserController@all');
 Route::get('/users/{id}', 'UserController@get');
 
 Route::group(['prefix' => 'bookings'], function() {
-    Route::get('/', 'BookingController@all');
-    Route::get('/{id}', 'BookingController@get');
-    Route::post('/', 'BookingController@create');
-    Route::put('/cancel/{id}', 'BookingController@cancel');
+    Route::get('/', 'Api\BookingController@all');
+    Route::get('/{id}', 'Api\BookingController@get');
+    Route::get('/cancel/{id}', 'Api\BookingController@cancel');
+    Route::post('/', 'Api\BookingController@create');
 });

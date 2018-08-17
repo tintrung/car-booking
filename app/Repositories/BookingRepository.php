@@ -11,7 +11,7 @@ class BookingRepository extends ModelAbstract implements ModelInterface
      *
      * @param BookingModel $booking
      */
-    public function __construct(Booking $booking)
+    public function __construct(BookingModel $booking)
     {
         parent::__construct($booking);
     }
