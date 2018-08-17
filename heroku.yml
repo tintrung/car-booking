@@ -1,0 +1,8 @@
+build:
+  languages:
+    - php
+release:
+  command:
+    - php artisan:migrate
+run:
+  web: vendor/bin/heroku-php-apache2 public/
