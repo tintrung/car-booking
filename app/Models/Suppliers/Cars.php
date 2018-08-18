@@ -25,7 +25,7 @@ class Cars extends Model
 
     public function supplier()
     {
-        return $this->belongsTo('App\Suppliers\Suppliers', 'id', 'supplier_id');
+        return $this->belongsTo('App\Models\Suppliers\Suppliers', 'id', 'supplier_id');
     }
 
     public function bookings()
