@@ -2,16 +2,16 @@
 
 namespace App\Repositories;
 
-use App\Models\Booking as BookingModel;
+use App\Models\Bookings as BookingsModel;
 
 class BookingRepository extends ModelAbstract implements ModelInterface
 {
     /**
      * Instantiate model
      *
-     * @param BookingModel $booking
+     * @param BookingsModel $booking
      */
-    public function __construct(BookingModel $booking)
+    public function __construct(BookingsModel $booking)
     {
         parent::__construct($booking);
     }
